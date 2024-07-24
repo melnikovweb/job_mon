@@ -1,0 +1,46 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+.components-button.remove-item {
+    display: block;
+    margin-left: auto;
+}
+
+.panelbody-help {
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 15px;
+    color: var(--sk-color-primary);
+}
+
+.tabs-block__side {
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--sk-color-border);
+    margin-bottom: 10px;
+
+    .components-button.remove-item {
+        margin-bottom: 0;
+    }
+}
+
+.content-wrapper,
+.block-editor-block-list__block {
+  .tabs-block {
+    .panels {
+      .panel {
+        display: none;
+        padding: 15px;
+        border: 1px solid var(--sk-color-border-doc);
+        margin: 15px;
+
+        .active {
+          display: block;
+        }
+      }
+    }
+  }
+}

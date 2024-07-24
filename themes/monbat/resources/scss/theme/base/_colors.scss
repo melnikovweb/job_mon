@@ -1,0 +1,57 @@
+/* stylelint-disable */
+
+/**
+  Generate colors https://gka.github.io/palettes
+ */
+
+:root {
+  /* Main colors */
+  --sk-color-black: black;
+  --sk-color-white: white;
+  --sk-color-light-grey: #e6e6e6;
+  --sk-color-gray: #494748;
+  --sk-color-middle-gray: #9D9D9D;
+  --sk-color-dark-grey: #757575;
+  --sk-color-green: #20a636;
+  --sk-color-dark-green: #4E9978;
+  --sk-color-light-red: #ff0000;
+
+  --sk-color-primary: #d8232a;
+
+  --sk-color-second: #183b77;
+  --sk-color-second-dark: #2E2E3A;
+
+  /* Background colors */
+  --sk-color-bg-primary: var(--sk-color-primary);
+  --sk-color-bg-second: var(--sk-color-second);
+
+  /* Typography */
+  --sk-color-text: var(--sk-color-black);
+  --sk-color-text-heading: var(--sk-color-second);
+  --sk-color-text-subtle: var(--sk-color-second);
+  --sk-color-link: var(--sk-color-second);
+  --sk-color-link-hover: var(--sk-color-second-dark);
+  --sk-color-link-visited: var(--sk-color-second);
+
+  /* Border */
+  --sk-color-border: #EDF2F4;
+  --sk-color-border-tab: #bbb;
+  --sk-color-border-doc: #a5a5a5;
+  --sk-color-form: #f6f6f6;
+
+  /* Body */
+  --sk-color-body: var(--sk-color-text);
+
+  /* Feedback */
+  --sk-color-success: green;
+  --sk-color-error: red;
+  --sk-color-warning: orange;
+
+  /* Icons */
+  --sk-color-icon-primary: var(--sk-color-primary);
+  --sk-color-icon-secondary: var(--sk-color-second);
+
+
+  //Other colors
+
+}

@@ -1,0 +1,17 @@
+@import "./../../resources/scss/theme/mixins/all.scss";
+
+.error404 {
+  &-container {
+    padding: calc(var(--sk-container-padding) * 3) 0;
+    text-align: center;
+  }
+
+  h1 {
+    padding-bottom: 20px;
+  }
+
+  main {
+    display: flex;
+    align-items: center;
+  }
+}

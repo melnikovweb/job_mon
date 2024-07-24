@@ -1,0 +1,83 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+
+.composed-images {
+  padding: 80px 25px;
+
+  @media screen and (max-width: 767px) {
+    padding: 40px 0;
+  }
+
+  &__wrapp {
+    display: flex;
+    padding-bottom: 385px;
+    position: relative;
+
+    @media screen and (max-width: 1310px) {
+      padding-bottom: calc((385 / 1310) * 100vw);
+    }
+
+    @media screen and (max-width: 767px) {
+      display: block;
+      padding-bottom: 0;
+    }
+  }
+
+  .sk-content-animation {
+    position: absolute;
+    width: calc(51% + 75px);
+    overflow: visible;
+
+    @media screen and (max-width: 1200px) {
+      width: calc(51% + 10px);
+    }
+
+    @media screen and (max-width: 767px) {
+      position: static;
+      width: 100%;
+
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    }
+
+    &:nth-child(1) {
+      left: -75px;
+      bottom: 0;
+      z-index: 1;
+
+      @media screen and (max-width: 1200px) {
+        left: -10px;
+      }
+    }
+
+    &:nth-child(2) {
+      right: -75px;
+      top: 0;
+      z-index: 0;
+
+      @media screen and (max-width: 1200px) {
+        right: -10px;
+      }
+    }
+
+    .wp-block-image {
+      box-shadow: 2px 4px 14px 4px rgba(0, 0, 0, 0.4);
+      margin-bottom: 0;
+      overflow: hidden;
+      max-height: 325px;
+
+      @media screen and (max-width: 1310px) {
+        max-height: calc((325 / 1310) * 100vw);
+      }
+
+      @media screen and (max-width: 767px) {
+        max-height: 100%;
+      }
+    }
+  }
+}

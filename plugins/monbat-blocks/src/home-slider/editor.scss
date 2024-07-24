@@ -1,0 +1,49 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+.home-slider {
+    position: relative;
+
+    &__item {
+        min-height: 100vh;
+    }
+
+    &__letters {
+        opacity: 1;
+        padding-top: 0;
+    }
+
+    &__letter {
+        top: 60px;
+
+        img {
+            transform: translateX(0);
+        }
+    }
+
+    &__logo {
+        display: none;
+    }
+
+    &__content {
+        height: 100%;
+
+        &.sk-news-absolute {
+            position: static;
+        }
+    }
+
+    &__scroll-indicator {
+        opacity: 1;
+    }
+}
+
+.components-panel__body {
+    .panelbody-title {
+        margin: 15px 0;
+    }
+}

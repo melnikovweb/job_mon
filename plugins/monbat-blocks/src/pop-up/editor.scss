@@ -1,0 +1,40 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+.block-editor-block-list__block {
+  .sk-popup {
+    &__content {
+      display: block;
+      text-align: left;
+    }
+
+    &__close {
+      display: none;
+    }
+
+    &__main {
+      padding-top: 40px;
+      padding-bottom: 40px;
+      height: auto;
+    }
+
+    .sk-btn {
+      .sk-btn__title {
+        pointer-events: auto;
+      }
+    }
+
+    &-trigger {
+      &--image {
+        .sk-popup__media,
+        .sk-popup__img {
+          pointer-events: auto;
+        }
+      }
+    }
+  }
+}

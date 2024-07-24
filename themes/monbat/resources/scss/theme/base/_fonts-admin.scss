@@ -1,0 +1,75 @@
+/* stylelint-disable */
+
+//Fonts format needs ttf, woff, woff2
+//Convert fonts https://cloudconvert.com/
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("../../fonts/proxima_nova_ext/910c69c9-1457-45b2-9db2-09eb4b2921eb.eot?#iefix");
+  src: url("../../fonts/proxima_nova_ext/910c69c9-1457-45b2-9db2-09eb4b2921eb.eot?#iefix") format("eot"), url("../../fonts/proxima_nova_ext/38b02c72-795a-436d-96b6-63bf366b0b4c.woff2") format("woff2"), url("../../fonts/proxima_nova_ext/5e902f22-dc96-42db-9cea-596fd6e0128f.woff") format("woff"), url("../../fonts/proxima_nova_ext/7a4accfd-087c-4552-a16f-a3eba295def8.ttf") format("truetype"), url("../../fonts/proxima_nova_ext/10216e29-520d-4186-98c2-bf0a0b8a2be5.svg#10216e29-520d-4186-98c2-bf0a0b8a2be5") format("svg");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("../../fonts/proxima_nova_ext/0020eb30-c98c-4a76-aaa5-c39374f14534.eot?#iefix");
+  src: url("../../fonts/proxima_nova_ext/0020eb30-c98c-4a76-aaa5-c39374f14534.eot?#iefix") format("eot"), url("../../fonts/proxima_nova_ext/781c5453-0067-4e64-9386-7c0726d63d57.woff2") format("woff2"), url("../../fonts/proxima_nova_ext/510df0e5-5b9f-4a1c-b46a-bcf1739bda43.woff") format("woff"), url("../../fonts/proxima_nova_ext/47e08118-5050-469b-a40c-dc3b2307e87e.ttf") format("truetype"), url("../../fonts/proxima_nova_ext/d93bd409-7380-4bb8-9d9f-d8035b5e0387.svg#d93bd409-7380-4bb8-9d9f-d8035b5e0387") format("svg");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("../../fonts/proxima_nova_ext/2e0c7005-3bdb-4fb0-a935-1f12dc9a066c.eot?#iefix");
+  src: url("../../fonts/proxima_nova_ext/2e0c7005-3bdb-4fb0-a935-1f12dc9a066c.eot?#iefix") format("eot"), url("../../fonts/proxima_nova_ext/060e1b48-d653-4884-adf6-01631f2241fd.woff2") format("woff2"), url("../../fonts/proxima_nova_ext/5ed3570e-76c2-4c41-9f38-78d05c023bfd.woff") format("woff"), url("../../fonts/proxima_nova_ext/6a096dca-7181-4227-8add-a60f17ce1a8e.ttf") format("truetype"), url("../../fonts/proxima_nova_ext/32565599-90ae-4932-b64b-d4fd81e5b2da.svg#32565599-90ae-4932-b64b-d4fd81e5b2da") format("svg");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("../../fonts/proxima_nova_ext/2e16962e-d63b-4e8e-a35c-dc7ba5faf6f6.eot?#iefix");
+  src: url("../../fonts/proxima_nova_ext/2e16962e-d63b-4e8e-a35c-dc7ba5faf6f6.eot?#iefix") format("eot"), url("../../fonts/proxima_nova_ext/672e09ff-117f-47a9-ad39-2af9420ccb79.woff2") format("woff2"), url("../../fonts/proxima_nova_ext/db9d12b0-9307-4b1f-88bf-ebb676516c3b.woff") format("woff"), url("../../fonts/proxima_nova_ext/79d731fe-d29c-48b7-9312-f503ee13216f.ttf") format("truetype"), url("../../fonts/proxima_nova_ext/9ab223e8-b901-4d93-a8a8-8de6182d3140.svg#9ab223e8-b901-4d93-a8a8-8de6182d3140") format("svg");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("../../fonts/proxima_nova_ext/c46a6af2-17e1-44cd-b22e-cde8ac5522bc.eot?#iefix");
+  src: url("../../fonts/proxima_nova_ext/c46a6af2-17e1-44cd-b22e-cde8ac5522bc.eot?#iefix") format("eot"), url("../../fonts/proxima_nova_ext/36b2c5d9-5814-4505-ba7a-f94849f9d8d9.woff2") format("woff2"), url("../../fonts/proxima_nova_ext/a77f80ae-abcf-401e-9cb3-ab84498fc03b.woff") format("woff"), url("../../fonts/proxima_nova_ext/7f5a805f-22af-4c2d-b5f9-ab2f4738f783.ttf") format("truetype"), url("../../fonts/proxima_nova_ext/5d6a7f54-9aa8-46f9-8a3b-9a3c77283e1a.svg#5d6a7f54-9aa8-46f9-8a3b-9a3c77283e1a") format("svg");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face{
+  font-family: "Proxima N W01 Bold";
+  src:url("../../fonts/proxima_nova/fbc6b03a-b3a1-427c-a884-053deca3a53c.eot?#iefix");
+  src:url("../../fonts/proxima_nova/fbc6b03a-b3a1-427c-a884-053deca3a53c.eot?#iefix") format("eot"),url("../../fonts/proxima_nova/0d416408-95c6-4ad7-b08d-e60573d3b37d.woff2") format("woff2"),url("../../fonts/proxima_nova/d999c07b-a049-4eb5-b8a6-4f36ae25e67e.woff") format("woff"),url("../../fonts/proxima_nova/4d4a75f5-d32a-4a09-8665-133afd39cc37.ttf") format("truetype"),url("../../fonts/proxima_nova/8152bc4e-d700-4c78-b6be-326893e6f53f.svg#8152bc4e-d700-4c78-b6be-326893e6f53f") format("svg");
+}
+
+@font-face {
+  font-family: "monbat";
+  src:  url("../../fonts/monbatsvg/monbat.eot?ek32je");
+  src:  url("../../fonts/monbatsvg/monbat.eot?ek32je#iefix") format("embedded-opentype"),
+  url("../../fonts/monbatsvg/monbat.ttf?ek32je") format("truetype"),
+  url("../../fonts/monbatsvg/monbat.woff?ek32je") format("woff"),
+  url("../../fonts/monbatsvg/monbat.svg?ek32je#monbat") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --sk-font-primary: "Proxima Nova";
+  --sk-font-primary-light: var(--sk-font-primary);
+  --sk-font-primary-it: var(--sk-font-primary);
+  --sk-font-primary-smbd: var(--sk-font-primary);
+  --sk-font-primary-bd: var(--sk-font-primary);
+  --sk-font-monbat: "monbat";
+}

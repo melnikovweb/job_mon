@@ -1,0 +1,150 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.gallery-slider {
+  margin-bottom: 40px;
+  padding-bottom: 60px;
+
+  @media screen and (max-width: 767px) {
+    padding-top: 40px;
+  }
+
+  &__media {
+    margin-bottom: 0;
+    display: flex;
+  }
+
+  .swiper-slide {
+    opacity: 0;
+
+    @media screen and (max-width: 767px) {
+      opacity: 1;
+    }
+
+    &-next,
+    &-prev {
+      opacity: 0.3;
+
+      @media screen and (max-width: 767px) {
+        opacity: 1;
+      }
+    }
+
+    &-active {
+      opacity: 1;
+    }
+
+    img {
+      height: auto;
+      width: 100%;
+    }
+  }
+
+  &__pagination {
+    margin: 20px auto 0;
+
+    .swiper-pagination-bullet {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: #727272;
+      margin: 10px 15px !important;
+      position: relative;
+      opacity: 1;
+      transform: scale(1) !important;
+
+      &::after {
+        content: '';
+        border-radius: 50%;
+        position: absolute;
+        inset: -6px;
+        background-color: rgba(216, 216, 216, 0.6);
+        transition: opacity 0.3s ease-in-out;
+        opacity: 0;
+      }
+
+      &:hover {
+        cursor: pointer;
+        background-color: var(--sk-color-primary);
+      }
+
+      &-active {
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &__button-prev,
+  &__button-next {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    padding: 0;
+    transform: translate(0, calc(-50% - 20px));
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
+
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      background-color: var(--sk-color-white);
+      will-change: background-color;
+      transition: background-color 0.3s ease-in-out;
+      z-index: -1;
+    }
+
+    &::before {
+      font-family: var(--sk-font-monbat);
+      text-transform: none;
+      speak: none;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+      opacity: 1;
+      font-size: 40px;
+      color: var(--sk-color-primary);
+      transition: color 0.3s ease-in-out;
+    }
+
+    &:hover {
+      cursor: pointer;
+      // background-color: var(--sk-color-primary);
+
+      &::before {
+        color: var(--sk-color-white);
+      }
+
+      &::after {
+        background-color: var(--sk-color-primary);
+      }
+    }
+  }
+
+  &__button-prev {
+    left: 5%;
+
+    &::before {
+      content: '\69';
+    }
+  }
+
+  &__button-next {
+    right: 5%;
+
+    &::before {
+      content: '\63';
+    }
+  }
+}

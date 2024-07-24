@@ -1,0 +1,120 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.content-wrapper,
+.block-editor-block-list__block,
+.sk-popup__wrapp {
+  .article {
+    &-date {
+      font-size: var(--sk-text-xs);
+      font-weight: 600;
+      line-height: 36px;
+      text-transform: uppercase;
+      margin-bottom: 55px;
+
+      @media screen and (max-width: 767px) {
+        margin-bottom: 35px;
+      }
+    }
+
+    &-document {
+      border-bottom: 1px solid var(--sk-color-border-doc);
+      padding: 18px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: var(--sk-text--md);
+      font-weight: 600;
+      line-height: 1;
+
+      @media screen and (max-width: 767px) {
+        display: block;
+        font-size: var(--sk-text--2xs);
+      }
+
+      &__title {
+        margin: 0 10px 0 0;
+
+        @media screen and (max-width: 767px) {
+          margin: 0 10px 15px 0;
+        }
+
+        a {
+          color: var(--sk-color-second);
+          text-decoration: underline;
+          will-change: color;
+          transition: color 0.3s ease-in-out;
+          font-weight: 600;
+
+          &::after {
+            content: '';
+          }
+
+          &:hover {
+            color: var(--sk-color-primary);
+          }
+        }
+      }
+
+      &__type,
+      &__size,
+      &__date {
+        text-transform: uppercase;
+        margin-right: 20px;
+
+        @media screen and (max-width: 767px) {
+          margin-right: 10px;
+        }
+      }
+
+      &__icon {
+        color: var(--sk-color-primary);
+        display: block;
+        text-decoration: none;
+        will-change: color;
+        transition: color 0.3s ease-in-out;
+        font-size: 20px;
+        line-height: 20px;
+        margin-right: 20px;
+
+        @media screen and (max-width: 767px) {
+          margin-right: 10px;
+        }
+
+        &:hover {
+          color: var(--sk-color-secondary);
+        }
+
+        &::before {
+          content: "\67";
+          font-family: var(--sk-font-monbat);
+          speak: none;
+          line-height: 1;
+          -webkit-font-smoothing: antialiased;
+        }
+
+        span {
+          display: none;
+        }
+      }
+
+      &__info {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  .attachments {
+    &__title {
+      border-bottom: 1px solid var(--sk-color-primary);
+
+      &::after {
+        margin-bottom: -4px;
+      }
+    }
+  }
+}

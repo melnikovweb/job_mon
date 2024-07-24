@@ -1,0 +1,329 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+:root {
+  --letter-1: 14.2%;
+  --letter-2: 28.4%;
+  --letter-3: 42.6%;
+  --letter-4: 56.8%;
+  --letter-5: 71%;
+  --letter-6: 85.2%;
+
+  @media screen and (max-width: 1023px) {
+    --letter-1: -1px;
+    --letter-2: 16.6%;
+    --letter-3: 33.2%;
+    --letter-4: 49.8%;
+    --letter-5: 66.4%;
+    --letter-6: 83%;
+  }
+}
+
+.home-slider {
+  min-height: 100vh;
+  width: 100%;
+  position: fixed;
+  inset: 0;
+
+  &__logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    transition-delay: 0.5s;
+
+    svg {
+      width: 100%;
+      height: auto;
+    }
+
+    .swiper-initialized & {
+      opacity: 1;
+    }
+
+    &.hide {
+      opacity: 0;
+    }
+  }
+
+  &__item {
+    background-position: center;
+    background-size: cover;
+  }
+
+  &__pagination.swiper-pagination {
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    transform: translateY(-50%);
+    z-index: 1;
+    color: var(--sk-color-white);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    transition-delay: 2s;
+
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
+
+    .swiper-initialized & {
+      opacity: 1;
+    }
+
+    .swiper-pagination-bullet {
+      width: inherit;
+      height: inherit;
+      opacity: 1;
+      background-color: transparent;
+
+      &__title {
+        vertical-align: middle;
+        display: inline-block;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+
+        @media screen and (max-width: 768px) {
+          display: none;
+        }
+      }
+
+      &__item {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        cursor: pointer;
+        width: 4px;
+        height: 4px;
+        background-color: var(--sk-color-white);
+        border-radius: 100%;
+        margin: 7px 0 7px 24px;
+
+        &::before {
+          content: "";
+          display: block;
+          z-index: -1;
+          opacity: 0;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 18px;
+          height: 18px;
+          background: rgba(0, 0, 0, 0.4);
+          border-radius: 100%;
+          transition: opacity 0.5s;
+        }
+      }
+
+      &-active {
+        .swiper-pagination-bullet__item {
+          &::before {
+            opacity: 1;
+          }
+        }
+
+        .swiper-pagination-bullet__title {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &__scroll-indicator {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--sk-color-white);
+    text-align: center;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+    transition-delay: 2s;
+
+    .swiper-initialized & {
+      opacity: 0.6;
+    }
+
+    .icon-scrolling {
+      font-family: var(--sk-font-monbat);
+      -webkit-font-smoothing: antialiased;
+      font-size: 30px;
+      line-height: 1;
+      margin-bottom: 5px;
+
+      &::before {
+        content: '\6c';
+      }
+    }
+
+    .sk-title--small {
+      margin-bottom: 0;
+    }
+  }
+
+  &__lines {
+    position: absolute;
+    inset: 0;
+
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
+
+    .line {
+      position: absolute;
+      top: 0;
+      width: 1px;
+      height: 0;
+      background-color: var(--sk-color-white);
+      opacity: 0.2;
+      z-index: 0;
+      transition: height 1s linear;
+
+      .swiper-initialized & {
+        height: 100%;
+      }
+    }
+  }
+
+  &__letters {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 150px;
+    padding-top: 23.5vh;
+    margin-bottom: calc((370 / 2560) * 100vh);
+    opacity: 0.2;
+
+    @media screen and (max-height: 826px) {
+      padding-top: 10vh;
+      height: 50px;
+    }
+
+    @media screen and (max-height: 1023px) {
+      padding-top: 20vh;
+      margin-bottom: calc((85 / 1440) * 100vh);
+    }
+
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
+
+    @media screen and (max-width: 1024px) {
+      margin-bottom: calc((85 / 1440) * 100vh);
+    }
+  }
+
+  &__letter {
+    overflow: hidden;
+    position: absolute;
+
+    img {
+      transform: translateX(-100%);
+      transition: transform 0.7s;
+
+      @media screen and (max-width: 1023px) {
+        max-width: 85%;
+      }
+
+      .swiper-slide-active & {
+        transform: translateX(0);
+      }
+
+      .first-slide & {
+        transition-delay: 2s;
+      }
+    }
+  }
+
+  &__letter,
+  &__lines .line {
+    &:nth-child(1) {
+      left: var(--letter-1);
+    }
+
+    &:nth-child(2) {
+      left: var(--letter-2);
+    }
+
+    &:nth-child(3) {
+      left: var(--letter-3);
+    }
+
+    &:nth-child(4) {
+      left: var(--letter-4);
+    }
+
+    &:nth-child(5) {
+      left: var(--letter-5);
+    }
+
+    &:nth-child(6) {
+      left: var(--letter-6);
+    }
+  }
+
+  &__content {
+    padding-left: var(--letter-1);
+    padding-right: 30px;
+    height: calc(100vh - 23.5vh - 150px - ((370 / 2560) * 100vh) - 100px);
+
+    @media screen and (max-width: 767px) {
+      padding: 25vh 30px 0;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+      padding: 0 20px;
+    }
+
+    @media screen and (max-width: 1023px) {
+      height: calc(100vh - 23.5vh - 150px - ((85 / 1440) * 100vh) - 100px);
+    }
+
+    & > .wp-block-group {
+      height: 100%;
+    }
+
+    &.sk-news-absolute {
+      @media screen and (min-width: 782px) {
+        position: absolute;
+        top: 15vh;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 85vh;
+      }
+
+      @media screen and (max-height: 1023px) {
+        top: 10vh;
+      }
+
+      @media screen and (max-height: 826px) {
+        .wp-block-image {
+          max-width: 60%;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-height: 740px) {
+    .has-h-1-up-font-size {
+      font-size: 30px !important;
+    }
+
+    .has-h-2-md-font-size {
+      font-size: 24px !important;
+    }
+  }
+}

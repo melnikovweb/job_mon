@@ -1,0 +1,18 @@
+.search-simple {
+  padding-top: 40px;
+
+  #simple-search-input {
+    max-width: 380px;
+    padding: 10px 20px;
+    border-radius: 0;
+    height: auto;
+    border: 1px solid var(--sk-color-border-doc);
+    -webkit-appearance: none;
+    outline: none;
+
+    &:focus {
+      outline: none;
+      border-radius: 0;
+    }
+  }
+}

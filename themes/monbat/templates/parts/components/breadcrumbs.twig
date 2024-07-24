@@ -1,0 +1,49 @@
+{% if not is_front_page and not is_404 %}
+  <section class="section-breadcrumbs">
+
+    {% if breadcrumbs.parents|length > 0 %}
+      <div class="breadcrumbs">
+        <ol>
+
+          <li>
+            <a target="_self" href="{{ site.url }}">{{ __('Home', 'monbat') }}</a>
+            <div class="delimiter">-</div>
+            <ul class="breadcrumbs-menu-list">
+              <li>
+                <a target="_self" class="menu__link" href="{{ site.url }}">{{ __('Home', 'monbat') }}</a>
+              </li>
+              {% for item in breadcrumbs.parents %}
+                <li>
+                  <a target="{{ item.target ? '_blank': '_self' }}" class="menu__link {{ item.current?'current':'' }}"
+                     href="{{ item.url }}" title="{{ item.title }}"
+                     rel="{{ item.title }}">{{ item.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </li>
+
+          {% if breadcrumbs.children|length > 0 %}
+            <li>
+              <a target="{{ breadcrumbs.current_parent.target ? '_blank': '_self' }}"
+                 href="{{ breadcrumbs.current_parent.url }}">{{ breadcrumbs.current_parent.title }}</a>
+              <div class="delimiter">-</div>
+              <ul class="breadcrumbs-menu-list">
+                {% for item in breadcrumbs.children %}
+                  <li>
+                    <a target="{{ item.target ? '_blank': '_self' }}" class="menu__link {{ item.current?'current':'' }}"
+                       href="{{ item.url }}">{{ item.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </li>
+          {% endif %}
+
+          <li class="current-title">{{ breadcrumbs.current_title }}</li>
+        </ol>
+
+      </div>
+    {% endif %}
+
+    {% include "parts/components/exchange-rate.twig" %}
+  </section>
+{% endif %}

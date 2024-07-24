@@ -1,0 +1,54 @@
+<section
+  class="{{ class ~ '-section' }} {{ classes }} {{ block_classes }}" {{ block.anchor ? 'id=' ~ block.anchor : null }}>
+  <div class="sk-container">
+    <div class="tabs">
+      {% if  typology_cats|length > 0 %}
+        {% set width = 100 / typology_cats|length %}
+        <ul>
+          {% for item in typology_cats %}
+            <li class="{{ loop.index is same as 1 ? 'active' : '' }}" data-tab="{{ slugify(item.name) }}"
+                style="width: {{ width ~ '%' }}">
+              {{ item.name }}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="slide-toggle-label">
+    <span class="show">{{ __('Show filters', 'monbat') }}</span>
+    <span class="hide">{{ __('Hide filters', 'monbat') }}</span>
+  </div>
+  <div class="filters">
+    <div class="sk-container">
+      <form method="post" class="form-filters">
+        <div class="inputs">
+          <div class="search-wrapper">
+            <input type="text" class="search" name="search" placeholder="{{ __('search', 'monbat') }}">
+          </div>
+          <select class="new-select" name="category">
+            <option value="all">{{ __('- Any -', 'monbat') }}</option>
+            {% for cat in category %}
+              <option value="{{ cat.slug }}">{{ cat.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <button class="sk-btn sk-btn--primary reset">{{ __('Reset', 'monbat') }}</button>
+        <input type="hidden" name="nonce" value="{{ filter_nonce }}">
+      </form>
+      <div class="buttons">
+        {% for btn in type %}
+          <button data-type="{{ btn.slug }}"
+            class="type-btn sk-btn sk-btn--primary {{ loop.index is same as 1 ? 'active-btn' : '' }}">{{ btn.name }}</button>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="dot-loader">
+    <div class="result-panel">
+      {% include "parts/components/result-documents.twig" with {'posts': posts} %}
+    </div>
+  </div>
+</section>

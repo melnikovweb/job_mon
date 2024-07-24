@@ -1,0 +1,44 @@
+.sk-form {
+  background: var(--sk-color-white);
+  padding: 0;
+  margin-bottom: 40px;
+
+  form {
+    width: 560px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @include breakpoint-down(sm) {
+      width: 100%;
+    }
+
+    fieldset {
+      width: 100%;
+    }
+  }
+
+  //Field block
+  &-field {
+    width: 100%;
+
+    label {
+      width: 100%;
+
+      span {
+        color: var(--sk-color-primary);
+        font-size: var(--sk-text--h5);
+        width: 100%;
+        margin-bottom: 10px;
+        font-weight: 500;
+        display: block;
+      }
+    }
+
+    &:last-child {
+      input {
+        margin-bottom: calc(50px - 12px);
+      }
+    }
+  }
+}

@@ -1,0 +1,759 @@
+{% if tabs|length > 0 %}
+  <section class="{{ class }} {{ classes }} {{ block_classes }}" {{ block.anchor ? 'id=' ~ block.anchor : null }}>
+    <div class="tabs-wrapper">
+      <div class="sk-container">
+        <ul class="tabs">
+          {% set width = 100 / tabs|length %}
+          {% for tab in tabs %}
+            <li class="{{ loop.index is same as 1 ? 'active' : '' }}" style="width: {{ width ~ '%' }}"
+                data-tab="{{ tab.sheetName|lower }}">
+              {% if tab.sheetName is same as 'PERF_EXECUTIVE' %}
+                {{ __('EXECUTIVE SUMMARY', 'monbat') }}
+              {% elseif tab.sheetName is same as 'ENTER_VALUE' %}
+                {{ __('ENTERPRISE VALUE', 'monbat') }}
+              {% elseif tab.sheetName is same as 'SHARE_EARNINGS' %}
+                {{ __('SHAREHOLDERS EARNINGS', 'monbat') }}
+              {% elseif tab.sheetName is same as 'OPERATIONAL_PERF' %}
+                {{ __('OPERATIONAL PERFORMANCE', 'monbat') }}
+              {% elseif tab.sheetName is same as 'CORP_VALUATION' %}
+                {{ __('CORPORATE VALUATION', 'monbat') }}
+              {% else %}
+                {{ tab.sheetName|replace({'_': ''}) }}
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="sk-container">
+      <div class="panels">
+        {% set catName1 = '' %}
+        {% set catName2 = '' %}
+        {% set catName3 = '' %}
+        {% set catName4 = '' %}
+        {% for tab in tabs %}
+          <div class="panel {{ loop.index is same as 1 ? 'active' : '' }}" data-panel="{{ tab.sheetName|lower }}">
+
+            {% if tab.sheetName is same as 'OPERATIONAL_PERF' %}
+              <div class="panel-wrapper">
+                <div class="title">{{ __('EBITDA and NET PROFIT', 'monbat') }}</div>
+                <div class="tables-row">
+                  <table>
+                    {% for rows in tab.data|slice(2, 1) %}
+                      <thead>
+                      <tr>
+                        <td class="chart-cell"></td>
+                        <td class="desc-cell">
+                          {{ __('Description', 'monbat') }}
+                        </td>
+                        <td class="units-cell">
+                          {{ __('Units', 'monbat') }}
+                        </td>
+                        <td>
+                          {{ __('Baseline 2012', 'monbat') }}
+                        </td>
+                        <td>
+                          {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                            {% set catName1 = rows.O %}
+                            {{ catName1 }}
+                          {% else %}
+                            {% set catName1 = rows.N %}
+                            {{ catName1 }}
+                          {% endif %}
+                        </td>
+                        <td>
+                          {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                            {% set catName2 = rows.P %}
+                            {{ catName2 }}
+                          {% else %}
+                            {% set catName2 = rows.O %}
+                            {{ catName2 }}
+                          {% endif %}
+                        </td>
+                        <td>
+                          {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                            {% set catName3 = rows.Q %}
+                            {{ catName3 }}
+                          {% else %}
+                            {% set catName3 = rows.P %}
+                            {{ catName3 }}
+                          {% endif %}
+                        </td>
+                        <td>
+                          {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                            {% set catName4 = rows.R %}
+                            {{ catName4 }}
+                          {% else %}
+                            {% set catName4 = rows.Q %}
+                            {{ catName4 }}
+                          {% endif %}
+                        </td>
+                      </tr>
+                      </thead>
+                    {% endfor %}
+                    <tbody>
+                    {% for rows in tab.data|slice(3, 9) %}
+                      {% if rows.A is same as '3'  or rows.B is same as '3' %}
+                        {% set cell1 = tab.sheetName is same as 'ENTER_VALUE' ? rows.N : rows.M %}
+                        {% set cell2 = tab.sheetName is same as 'ENTER_VALUE' ? rows.O : rows.N %}
+                        {% set cell3 = tab.sheetName is same as 'ENTER_VALUE' ? rows.P : rows.O %}
+                        {% set cell4 = tab.sheetName is same as 'ENTER_VALUE' ? rows.Q : rows.P %}
+                        {% set cell5 = tab.sheetName is same as 'ENTER_VALUE' ? rows.R : rows.Q %}
+                        <tr>
+                          <td class="chart-cell">
+                        <span class="chart"
+                              data-lang="{{ wpml_current_language }}"
+                              data-series-name="{{ tab.sheetName is same as 'ENTER_VALUE' ? wpml_current_language is same as 'bg'? rows.C : rows.D : wpml_current_language is same as 'bg'? rows.B : rows.C }}"
+                              data-units="{{ tab.sheetName is same as 'ENTER_VALUE' ? wpml_current_language is same as 'bg'? rows.E : rows.F : wpml_current_language is same as 'bg'? rows.D : rows.E }}"
+                              data-categories="{{ __('Baseline 2012', 'monbat') ~ ';' ~ catName1 ~ ';' ~ catName2 ~ ';' ~ catName3 ~ ';' ~ catName4 }}"
+                              data-points="{{ cell1 ~ ';' ~ cell2 ~ ';' ~ cell3 ~ ';' ~ cell4 ~ ';' ~ cell5 }}"
+                        >
+                        </span>
+                          </td>
+                          <td class="desc-cell">
+                            {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                              {% if wpml_current_language is same as 'bg' %}
+                                {{ rows.C }}
+                              {% else %}
+                                {{ rows.D }}
+                              {% endif %}
+                            {% else %}
+                              {% if wpml_current_language is same as 'bg' %}
+                                {{ rows.B }}
+                              {% else %}
+                                {{ rows.C }}
+                              {% endif %}
+                            {% endif %}
+                          </td>
+                          <td class="units-cell">
+                            {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                              {% if wpml_current_language is same as 'bg' %}
+                                {{ rows.E }}
+                              {% else %}
+                                {{ rows.F }}
+                              {% endif %}
+                            {% else %}
+                              {% if wpml_current_language is same as 'bg' %}
+                                {{ rows.D }}
+                              {% else %}
+                                {{ rows.E }}
+                              {% endif %}
+                            {% endif %}
+                          </td>
+
+                          <td>{{ cell1 }}</td>
+                          <td>{{ cell2 }}</td>
+                          <td>{{ cell3 }}</td>
+                          <td>{{ cell4 }}</td>
+                          <td>{{ cell5 }}</td>
+                        </tr>
+                      {% endif %}
+                    {% endfor %}
+                    </tbody>
+                  </table>
+                  <table>
+                    {% for rows in tab.data|slice(2, 1) %}
+                      <thead>
+                      <tr>
+                        <td>
+                          {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                            {% if wpml_current_language is same as 'bg' %}
+                              {{ rows.AA|replace({'_bg': ''}) }}
+                            {% else %}
+                              {{ rows.Z|replace({'_en': ''}) }}
+                            {% endif %}
+                          {% else %}
+                            {% if wpml_current_language is same as 'bg' %}
+                              {{ rows.Z|replace({'_bg': ''}) }}
+                            {% else %}
+                              {{ rows.Y|replace({'_en': ''}) }}
+                            {% endif %}
+                          {% endif %}
+                        </td>
+                        <td>
+                          {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                            {% if wpml_current_language is same as 'bg' %}
+                              {{ rows.AC|replace({'_bg': ''}) }}
+                            {% else %}
+                              {{ rows.AB|replace({'_en': ''}) }}
+                            {% endif %}
+                          {% else %}
+                            {% if wpml_current_language is same as 'bg' %}
+                              {{ rows.AB|replace({'_bg': ''}) }}
+                            {% else %}
+                              {{ rows.AA|replace({'_en': ''}) }}
+                            {% endif %}
+                          {% endif %}
+                        </td>
+                        <td>
+                          {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                            {% if wpml_current_language is same as 'bg' %}
+                              {{ rows.AE|replace({'_bg': ''}) }}
+                            {% else %}
+                              {{ rows.AD|replace({'_en': ''}) }}
+                            {% endif %}
+                          {% else %}
+                            {% if wpml_current_language is same as 'bg' %}
+                              {{ rows.AD|replace({'_bg': ''}) }}
+                            {% else %}
+                              {{ rows.AC|replace({'_en': ''}) }}
+                            {% endif %}
+                          {% endif %}
+                        </td>
+                        <td>
+                          {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                            {% if wpml_current_language is same as 'bg' %}
+                              {{ rows.AG|replace({'_bg': ''}) }}
+                            {% else %}
+                              {{ rows.AF|replace({'_en': ''}) }}
+                            {% endif %}
+                          {% else %}
+                            {% if wpml_current_language is same as 'bg' %}
+                              {{ rows.AF|replace({'_bg': ''}) }}
+                            {% else %}
+                              {{ rows.AE|replace({'_en': ''}) }}
+                            {% endif %}
+                          {% endif %}
+                        </td>
+                      </tr>
+                      </thead>
+                    {% endfor %}
+                    <tbody>
+                    {% for rows in tab.data|slice(3, 9) %}
+                      {% if rows.A is same as '3'  or rows.B is same as '3' %}
+                        <tr>
+                          <td>
+                            {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                              {{ rows.Z }}
+                            {% else %}
+                              {{ rows.Y }}
+                            {% endif %}
+                          </td>
+                          <td>
+                            {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                              {{ rows.AB }}
+                            {% else %}
+                              {{ rows.AA }}
+                            {% endif %}
+                          </td>
+                          <td>
+                            {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                              {{ rows.AD }}
+                            {% else %}
+                              {{ rows.AC }}
+                            {% endif %}
+                          </td>
+                          <td>
+                            {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                              {{ rows.AF }}
+                            {% else %}
+                              {{ rows.AE }}
+                            {% endif %}
+                          </td>
+                        </tr>
+                      {% endif %}
+                    {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+
+                {% for rows in tab.data|slice(2, 1) %}
+                  {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                    {% if rows.R %}
+                      <div class="label">
+                        {{ rows.R }}
+                      </div>
+                    {% endif %}
+                  {% else %}
+                    {% if rows.Q %}
+                      <div class="label">
+                        {{ rows.Q }}
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+              </div>
+
+              <div class="panel-wrapper">
+                <div class="title">{{ __('NET DEBTS', 'monbat') }}</div>
+                <div class="tables-row">
+                  <table>
+                    {% for rows in tab.data|slice(2, 1) %}
+                      <thead>
+                      <tr>
+                        <td class="chart-cell"></td>
+                        <td class="desc-cell">
+                          {{ __('Description', 'monbat') }}
+                        </td>
+                        <td class="units-cell">
+                          {{ __('Units', 'monbat') }}
+                        </td>
+                        <td>
+                          {{ __('Baseline 2012', 'monbat') }}
+                        </td>
+                        <td>
+                          {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                            {% set catName1 = rows.O %}
+                            {{ catName1 }}
+                          {% else %}
+                            {% set catName1 = rows.N %}
+                            {{ catName1 }}
+                          {% endif %}
+                        </td>
+                        <td>
+                          {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                            {% set catName2 = rows.P %}
+                            {{ catName2 }}
+                          {% else %}
+                            {% set catName2 = rows.O %}
+                            {{ catName2 }}
+                          {% endif %}
+                        </td>
+                        <td>
+                          {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                            {% set catName3 = rows.Q %}
+                            {{ catName3 }}
+                          {% else %}
+                            {% set catName3 = rows.P %}
+                            {{ catName3 }}
+                          {% endif %}
+                        </td>
+                        <td>
+                          {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                            {% set catName4 = rows.R %}
+                            {{ catName4 }}
+                          {% else %}
+                            {% set catName4 = rows.Q %}
+                            {{ catName4 }}
+                          {% endif %}
+                        </td>
+                      </tr>
+                      </thead>
+                    {% endfor %}
+                    <tbody>
+                    {% for rows in tab.data|slice(17, length) %}
+                      {% if rows.A is same as '3'  or rows.B is same as '3' %}
+                        {% set cell1 = tab.sheetName is same as 'ENTER_VALUE' ? rows.N : rows.M %}
+                        {% set cell2 = tab.sheetName is same as 'ENTER_VALUE' ? rows.O : rows.N %}
+                        {% set cell3 = tab.sheetName is same as 'ENTER_VALUE' ? rows.P : rows.O %}
+                        {% set cell4 = tab.sheetName is same as 'ENTER_VALUE' ? rows.Q : rows.P %}
+                        {% set cell5 = tab.sheetName is same as 'ENTER_VALUE' ? rows.R : rows.Q %}
+                        <tr>
+                          <td class="chart-cell">
+                        <span class="chart"
+                              data-lang="{{ wpml_current_language }}"
+                              data-series-name="{{ tab.sheetName is same as 'ENTER_VALUE' ? wpml_current_language is same as 'bg'? rows.C : rows.D : wpml_current_language is same as 'bg'? rows.B : rows.C }}"
+                              data-units="{{ tab.sheetName is same as 'ENTER_VALUE' ? wpml_current_language is same as 'bg'? rows.E : rows.F : wpml_current_language is same as 'bg'? rows.D : rows.E }}"
+                              data-categories="{{ __('Baseline 2012', 'monbat') ~ ';' ~ catName1 ~ ';' ~ catName2 ~ ';' ~ catName3 ~ ';' ~ catName4 }}"
+                              data-points="{{ cell1 ~ ';' ~ cell2 ~ ';' ~ cell3 ~ ';' ~ cell4 ~ ';' ~ cell5 }}"
+                        >
+                        </span>
+                          </td>
+                          <td class="desc-cell">
+                            {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                              {% if wpml_current_language is same as 'bg' %}
+                                {{ rows.C }}
+                              {% else %}
+                                {{ rows.D }}
+                              {% endif %}
+                            {% else %}
+                              {% if wpml_current_language is same as 'bg' %}
+                                {{ rows.B }}
+                              {% else %}
+                                {{ rows.C }}
+                              {% endif %}
+                            {% endif %}
+                          </td>
+                          <td class="units-cell">
+                            {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                              {% if wpml_current_language is same as 'bg' %}
+                                {{ rows.E }}
+                              {% else %}
+                                {{ rows.F }}
+                              {% endif %}
+                            {% else %}
+                              {% if wpml_current_language is same as 'bg' %}
+                                {{ rows.D }}
+                              {% else %}
+                                {{ rows.E }}
+                              {% endif %}
+                            {% endif %}
+                          </td>
+
+                          <td>{{ cell1 }}</td>
+                          <td>{{ cell2 }}</td>
+                          <td>{{ cell3 }}</td>
+                          <td>{{ cell4 }}</td>
+                          <td>{{ cell5 }}</td>
+                        </tr>
+                      {% endif %}
+                    {% endfor %}
+                    </tbody>
+                  </table>
+                  <table>
+                    {% for rows in tab.data|slice(2, 1) %}
+                      <thead>
+                      <tr>
+                        <td>
+                          {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                            {% if wpml_current_language is same as 'bg' %}
+                              {{ rows.AA|replace({'_bg': ''}) }}
+                            {% else %}
+                              {{ rows.Z|replace({'_en': ''}) }}
+                            {% endif %}
+                          {% else %}
+                            {% if wpml_current_language is same as 'bg' %}
+                              {{ rows.Z|replace({'_bg': ''}) }}
+                            {% else %}
+                              {{ rows.Y|replace({'_en': ''}) }}
+                            {% endif %}
+                          {% endif %}
+                        </td>
+                        <td>
+                          {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                            {% if wpml_current_language is same as 'bg' %}
+                              {{ rows.AC|replace({'_bg': ''}) }}
+                            {% else %}
+                              {{ rows.AB|replace({'_en': ''}) }}
+                            {% endif %}
+                          {% else %}
+                            {% if wpml_current_language is same as 'bg' %}
+                              {{ rows.AB|replace({'_bg': ''}) }}
+                            {% else %}
+                              {{ rows.AA|replace({'_en': ''}) }}
+                            {% endif %}
+                          {% endif %}
+                        </td>
+                        <td>
+                          {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                            {% if wpml_current_language is same as 'bg' %}
+                              {{ rows.AE|replace({'_bg': ''}) }}
+                            {% else %}
+                              {{ rows.AD|replace({'_en': ''}) }}
+                            {% endif %}
+                          {% else %}
+                            {% if wpml_current_language is same as 'bg' %}
+                              {{ rows.AD|replace({'_bg': ''}) }}
+                            {% else %}
+                              {{ rows.AC|replace({'_en': ''}) }}
+                            {% endif %}
+                          {% endif %}
+                        </td>
+                        <td>
+                          {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                            {% if wpml_current_language is same as 'bg' %}
+                              {{ rows.AG|replace({'_bg': ''}) }}
+                            {% else %}
+                              {{ rows.AF|replace({'_en': ''}) }}
+                            {% endif %}
+                          {% else %}
+                            {% if wpml_current_language is same as 'bg' %}
+                              {{ rows.AF|replace({'_bg': ''}) }}
+                            {% else %}
+                              {{ rows.AE|replace({'_en': ''}) }}
+                            {% endif %}
+                          {% endif %}
+                        </td>
+                      </tr>
+                      </thead>
+                    {% endfor %}
+                    <tbody>
+                    {% for rows in tab.data|slice(17, length) %}
+                      {% if rows.A is same as '3'  or rows.B is same as '3' %}
+                        <tr>
+                          <td>
+                            {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                              {{ rows.Z }}
+                            {% else %}
+                              {{ rows.Y }}
+                            {% endif %}
+                          </td>
+                          <td>
+                            {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                              {{ rows.AB }}
+                            {% else %}
+                              {{ rows.AA }}
+                            {% endif %}
+                          </td>
+                          <td>
+                            {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                              {{ rows.AD }}
+                            {% else %}
+                              {{ rows.AC }}
+                            {% endif %}
+                          </td>
+                          <td>
+                            {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                              {{ rows.AF }}
+                            {% else %}
+                              {{ rows.AE }}
+                            {% endif %}
+                          </td>
+                        </tr>
+                      {% endif %}
+                    {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+
+                {% for rows in tab.data|slice(2, 1) %}
+                  {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                    {% if rows.R %}
+                      <div class="label">
+                        {{ rows.R }}
+                      </div>
+                    {% endif %}
+                  {% else %}
+                    {% if rows.Q %}
+                      <div class="label">
+                        {{ rows.Q }}
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% else %}
+              <div class="panel-wrapper">
+                <div class="tables-row">
+                  <table>
+                    {% for rows in tab.data|slice(2, 1) %}
+                      <thead>
+                      <tr>
+                        <td class="chart-cell"></td>
+                        <td class="desc-cell">
+                          {{ __('Description', 'monbat') }}
+                        </td>
+                        <td class="units-cell">
+                          {{ __('Units', 'monbat') }}
+                        </td>
+                        <td>
+                          {{ __('Baseline 2012', 'monbat') }}
+                        </td>
+                        <td>
+                          {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                            {% set catName1 = rows.O %}
+                            {{ catName1 }}
+                          {% else %}
+                            {% set catName1 = rows.N %}
+                            {{ catName1 }}
+                          {% endif %}
+                        </td>
+                        <td>
+                          {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                            {% set catName2 = rows.P %}
+                            {{ catName2 }}
+                          {% else %}
+                            {% set catName2 = rows.O %}
+                            {{ catName2 }}
+                          {% endif %}
+                        </td>
+                        <td>
+                          {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                            {% set catName3 = rows.Q %}
+                            {{ catName3 }}
+                          {% else %}
+                            {% set catName3 = rows.P %}
+                            {{ catName3 }}
+                          {% endif %}
+                        </td>
+                        <td>
+                          {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                            {% set catName4 = rows.R %}
+                            {{ catName4 }}
+                          {% else %}
+                            {% set catName4 = rows.Q %}
+                            {{ catName4 }}
+                          {% endif %}
+                        </td>
+                      </tr>
+                      </thead>
+                    {% endfor %}
+                    <tbody>
+                    {% for rows in tab.data|slice(3, length) %}
+                      {% if rows.A is same as '3'  or rows.B is same as '3' %}
+                        {% set cell1 = tab.sheetName is same as 'ENTER_VALUE' ? rows.N : rows.M %}
+                        {% set cell2 = tab.sheetName is same as 'ENTER_VALUE' ? rows.O : rows.N %}
+                        {% set cell3 = tab.sheetName is same as 'ENTER_VALUE' ? rows.P : rows.O %}
+                        {% set cell4 = tab.sheetName is same as 'ENTER_VALUE' ? rows.Q : rows.P %}
+                        {% set cell5 = tab.sheetName is same as 'ENTER_VALUE' ? rows.R : rows.Q %}
+                        <tr>
+                          <td class="chart-cell">
+                        <span class="chart"
+                              data-lang="{{ wpml_current_language }}"
+                              data-series-name="{{ tab.sheetName is same as 'ENTER_VALUE' ? wpml_current_language is same as 'bg'? rows.C : rows.D : wpml_current_language is same as 'bg'? rows.B : rows.C }}"
+                              data-units="{{ tab.sheetName is same as 'ENTER_VALUE' ? wpml_current_language is same as 'bg'? rows.E : rows.F : wpml_current_language is same as 'bg'? rows.D : rows.E }}"
+                              data-categories="{{ __('Baseline 2012', 'monbat') ~ ';' ~ catName1 ~ ';' ~ catName2 ~ ';' ~ catName3 ~ ';' ~ catName4 }}"
+                              data-points="{{ cell1 ~ ';' ~ cell2 ~ ';' ~ cell3 ~ ';' ~ cell4 ~ ';' ~ cell5 }}"
+                        >
+                        </span>
+                          </td>
+                          <td class="desc-cell">
+                            {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                              {% if wpml_current_language is same as 'bg' %}
+                                {{ rows.C }}
+                              {% else %}
+                                {{ rows.D }}
+                              {% endif %}
+                            {% else %}
+                              {% if wpml_current_language is same as 'bg' %}
+                                {{ rows.B }}
+                              {% else %}
+                                {{ rows.C }}
+                              {% endif %}
+                            {% endif %}
+                          </td>
+                          <td class="units-cell">
+                            {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                              {% if wpml_current_language is same as 'bg' %}
+                                {{ rows.E }}
+                              {% else %}
+                                {{ rows.F }}
+                              {% endif %}
+                            {% else %}
+                              {% if wpml_current_language is same as 'bg' %}
+                                {{ rows.D }}
+                              {% else %}
+                                {{ rows.E }}
+                              {% endif %}
+                            {% endif %}
+                          </td>
+
+                          <td>{{ cell1 }}</td>
+                          <td>{{ cell2 }}</td>
+                          <td>{{ cell3 }}</td>
+                          <td>{{ cell4 }}</td>
+                          <td>{{ cell5 }}</td>
+                        </tr>
+                      {% endif %}
+                    {% endfor %}
+                    </tbody>
+                  </table>
+                  <table>
+                    {% for rows in tab.data|slice(2, 1) %}
+                      <thead>
+                      <tr>
+                        <td>
+                          {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                            {% if wpml_current_language is same as 'bg' %}
+                              {{ rows.AA|replace({'_bg': ''}) }}
+                            {% else %}
+                              {{ rows.Z|replace({'_en': ''}) }}
+                            {% endif %}
+                          {% else %}
+                            {% if wpml_current_language is same as 'bg' %}
+                              {{ rows.Z|replace({'_bg': ''}) }}
+                            {% else %}
+                              {{ rows.Y|replace({'_en': ''}) }}
+                            {% endif %}
+                          {% endif %}
+                        </td>
+                        <td>
+                          {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                            {% if wpml_current_language is same as 'bg' %}
+                              {{ rows.AC|replace({'_bg': ''}) }}
+                            {% else %}
+                              {{ rows.AB|replace({'_en': ''}) }}
+                            {% endif %}
+                          {% else %}
+                            {% if wpml_current_language is same as 'bg' %}
+                              {{ rows.AB|replace({'_bg': ''}) }}
+                            {% else %}
+                              {{ rows.AA|replace({'_en': ''}) }}
+                            {% endif %}
+                          {% endif %}
+                        </td>
+                        <td>
+                          {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                            {% if wpml_current_language is same as 'bg' %}
+                              {{ rows.AE|replace({'_bg': ''}) }}
+                            {% else %}
+                              {{ rows.AD|replace({'_en': ''}) }}
+                            {% endif %}
+                          {% else %}
+                            {% if wpml_current_language is same as 'bg' %}
+                              {{ rows.AD|replace({'_bg': ''}) }}
+                            {% else %}
+                              {{ rows.AC|replace({'_en': ''}) }}
+                            {% endif %}
+                          {% endif %}
+                        </td>
+                        <td>
+                          {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                            {% if wpml_current_language is same as 'bg' %}
+                              {{ rows.AG|replace({'_bg': ''}) }}
+                            {% else %}
+                              {{ rows.AF|replace({'_en': ''}) }}
+                            {% endif %}
+                          {% else %}
+                            {% if wpml_current_language is same as 'bg' %}
+                              {{ rows.AF|replace({'_bg': ''}) }}
+                            {% else %}
+                              {{ rows.AE|replace({'_en': ''}) }}
+                            {% endif %}
+                          {% endif %}
+                        </td>
+                      </tr>
+                      </thead>
+                    {% endfor %}
+                    <tbody>
+                    {% for rows in tab.data|slice(3, length) %}
+                      {% if rows.A is same as '3'  or rows.B is same as '3' %}
+                        <tr>
+                          <td>
+                            {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                              {{ rows.Z }}
+                            {% else %}
+                              {{ rows.Y }}
+                            {% endif %}
+                          </td>
+                          <td>
+                            {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                              {{ rows.AB }}
+                            {% else %}
+                              {{ rows.AA }}
+                            {% endif %}
+                          </td>
+                          <td>
+                            {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                              {{ rows.AD }}
+                            {% else %}
+                              {{ rows.AC }}
+                            {% endif %}
+                          </td>
+                          <td>
+                            {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                              {{ rows.AF }}
+                            {% else %}
+                              {{ rows.AE }}
+                            {% endif %}
+                          </td>
+                        </tr>
+                      {% endif %}
+                    {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+
+                {% for rows in tab.data|slice(2, 1) %}
+                  {% if tab.sheetName is same as 'ENTER_VALUE' %}
+                    {% if rows.R %}
+                      <div class="label">
+                        {{ rows.R }}
+                      </div>
+                    {% endif %}
+                  {% else %}
+                    {% if rows.Q %}
+                      <div class="label">
+                        {{ rows.Q }}
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endif %}

@@ -1,0 +1,181 @@
+<header class="header">
+  <div class="header-wrapper">
+    {% if logo_svg %}
+      <a href="{{ site.url }}" title="Home" rel="Home" class="header-logo header-logo-svg">
+        {{ inline_svg(logo_svg, true) }}
+      </a>
+    {% else %}
+      <a href="{{ site.url }}" rel="Home" class="header-logo white">
+        <img title="Home" src="{{ logo_img }}" alt="monbat-logo" class="header-image" height="38" width="128">
+      </a>
+    {% endif %}
+
+    <div class="header__block">
+      {% if not is_front_page %}
+      <div class="header__block-info">
+        {{ shortcode('[price]') }}
+      </div>
+      {% endif %}
+      <div class="header__block-lang">
+        {{ shortcode('[wpml_language_selector_widget]') }}
+      </div>
+      <div class="header__block-menu">
+        <div class="toggle toggle-icon" data-target="primary__menu">
+          <span class="icon"></span>
+          {{ __('Menu', 'monbat') }}
+        </div>
+      </div>
+      <div class="header__block-battery">
+        <div class="toggle toggle-icon" data-target="batteries__menu">
+          <span class="icon"></span>
+          {{ __('Batteries', 'monbat') }}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="primary__menu">
+  <div class="row">
+    <div class="primary__menu-wrapper">
+      <div class="primary__menu-info">
+        <div class="lang-block">
+          <div class="dropdown-result">
+            <span class="label">{{ wpml_current_language }}</span>
+          </div>
+          {{ shortcode('[wpml_language_selector_widget]') }}
+        </div>
+        <div class="search-block">
+          {% include "parts/components/search-simple-form.twig" with {'search_loop' : true} %}
+        </div>
+        {% if option_fields.primary_menu.contacts %}
+          <div class="contacts-block">
+            <div class="content">
+              {{ option_fields.primary_menu.contacts }}
+            </div>
+            <div class="socials">
+              {% for item in option_fields.primary_menu.socials %}
+                {% if item %}
+                  <a href="{{ item.link.url }}" title="{{ item.link.title|capitalize }}"
+                     target="{{ item.link.target ? '_blank': '_self' }}">
+                    {% if item.icon %}
+                      {% if item.icon.mime_type == "image/svg+xml" %}
+                        {{ inline_svg(item.icon.url, true) }}
+                      {% else %}
+                        <img src="{{ item.icon.sizes.social_icon }}"
+                             width="{{ item.icon.sizes['social_icon-width'] }}"
+                             height="{{ item.icon.sizes['social_icon-height'] }}"
+                             alt="{{ item.icon.alt }}">
+                      {% endif %}
+                    {% endif %}
+                  </a>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+        <div class="buttons-block">
+          {% for item in option_fields.primary_menu.buttons %}
+            {% if item.button %}
+              <a href="{{ item.button.url }}" title="{{ item.button.title|capitalize }}"
+                 target="{{ item.button.target ? '_blank': '_self' }}" class="sk-btn sk-btn--white">
+                {{ item.button.title }}
+                {% if item.button.target %}
+                  <span class="icon-external-link"></span>
+                {% endif %}
+              </a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <nav class="header__nav" role="navigation">
+        {% include "parts/components/header-menu.twig" with {'items': menu.get_items} %}
+      </nav>
+    </div>
+  </div>
+</div>
+
+<div class="batteries__menu">
+  <div class="row">
+    <div class="batteries__menu-wrapper">
+      <div class="top-block">
+        {% if option_fields.batteries_menu.title %}
+          <p>{{ option_fields.batteries_menu.title }}</p>
+        {% endif %}
+      </div>
+      <div class="middle-block">
+        {% for item in option_fields.batteries_menu.benefits %}
+          {% if item.image %}
+            <div class="item">
+              {% if item.image %}
+                <span class="item-title">
+                  {% if item.title %}
+                    {{ item.title }}
+                  {% else %}
+                    {{ item.image.alt }}
+                  {% endif %}
+                </span>
+                <div class="image">
+                  {% if item.image.mime_type == "image/svg+xml" %}
+                    {{ inline_svg(item.image.url, true) }}
+                  {% else %}
+                    <img src="{{ item.image.sizes.benefits }}"
+                         width="{{ item.image.sizes['benefits-width'] }}"
+                         height="{{ item.image.sizes['benefits-height'] }}"
+                         alt="{{ item.image.alt }}">
+                  {% endif %}
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="bottom-block">
+        {% for item in option_fields.batteries_menu.contacts %}
+          {% if item %}
+            <div class="column">
+              {% if item.title %}
+                <p class="title">{{ item.title }}</p>
+              {% endif %}
+              <div class="accordion-body">
+                {% if item.button %}
+                  <a href="{{ item.button.url }}" title="{{ item.button.title|capitalize }}"
+                     target="{{ item.button.target ? '_blank': '_self' }}"
+                     class="sk-btn sk-btn--white {{ item.button.target ? 'target': '' }}">
+                    {{ item.button.title }}
+                    {% if item.button.target %}
+                      <span class="icon-external-link"></span>
+                    {% endif %}
+                  </a>
+                {% endif %}
+                {% if item.content %}
+                  <div class="content">
+                    {{ item.content }}
+                  </div>
+                {% endif %}
+                <div class="links">
+                  {% for item in item.links %}
+                    {% if item %}
+                      <a href="{{ item.link.url }}" title="{{ item.link.title|capitalize }}"
+                         target="{{ item.link.target ? '_blank': '_self' }}">
+                        {{ item.link.title }}
+                      </a>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="menu-wrapper">
+  <div class="rotate">
+    <i class="menu-background top"></i>
+    <i class="menu-background middle"></i>
+    <i class="menu-background bottom"></i>
+  </div>
+</div>

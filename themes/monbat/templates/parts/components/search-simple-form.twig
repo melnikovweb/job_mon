@@ -1,0 +1,18 @@
+{% if not search_loop %}
+  <div class="search-simple fixed">
+    <form class="search-simple__form" action="{{ site.url }}">
+      <label class="sk-typo-mod-font-700" for="simple-search-input">{{ __('Enter your keywords ', 'monbat') }}</label>
+      <input type="search" autocomplete="off" class="search-simple__form_input" placeholder=""
+             value="{{ search_query }}"
+             name="s" id="simple-search-input">
+      <button class="sk-btn sk-btn--primary">{{ __('Search', 'monbat') }}</button>
+    </form>
+  </div>
+{% else %}
+    <form class="search-header" action="{{ site.url }}">
+      <input type="search" autocomplete="off" class="search-header__input" placeholder="{{ __('SEARCH', 'monbat') }}"
+             value="{{ search_query }}"
+             name="s">
+      <button class="loop"></button>
+    </form>
+{% endif %}

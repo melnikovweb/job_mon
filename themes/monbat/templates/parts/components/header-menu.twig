@@ -1,0 +1,23 @@
+{% if menu %}
+  <ul class="{{ child ? 'child' : 'parent' }}">
+    {% if child %}
+      <li>
+        <button class="back">{{ back }}</button>
+      </li>
+    {% else %}
+      <li class="menu-item-home">
+        <a href="{{ site.url }}" title="Home" rel="Home" class="">{{ __('Home', 'monbat') }}</a>
+      </li>
+    {% endif %}
+    {% for item in items %}
+      {% if item %}
+        <li class="{{ item.classes | join(' ') }}">
+          <a target="{{ item.target ? '_blank': '_self' }}" href="{{ item.link }}">{{ item.title }}</a>
+          {% if item.children %}
+            {% include "parts/components/header-menu.twig" with {'items': item.children, 'child' : true, 'back': item.title } %}
+          {% endif %}
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endif %}

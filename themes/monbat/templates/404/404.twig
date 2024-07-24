@@ -1,0 +1,13 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+
+	<div class="sk-container error404-container">
+		<h1 class="sk-red-title">{{ __( "Page not found", 'monbat' ) }}</h1>
+
+		<button class="sk-btn sk-btn--primary" onclick="window.history.back()">
+			{{ __( 'Go Back', 'monbat' ) }}
+		</button>
+	</div>
+{% endblock %}

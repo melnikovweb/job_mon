@@ -1,0 +1,55 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+.panelbody-wrapp {
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+
+  &:not(:last-of-type) {
+    border-bottom: 1px solid var(--sk-color-border);
+  }
+}
+
+.panelbody-media {
+  figure {
+    margin-bottom: 0;
+  }
+
+  img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &__wrapp {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .remove-item {
+    margin-top: 15px;
+  }
+}
+
+.content-wrapper,
+.block-editor-block-list__block,
+.sk-popup__wrapp {
+  .metal-exchange {
+    &__item {
+      opacity: 1;
+    }
+
+    &__controller {
+      & > * {
+        pointer-events: all;
+      }
+    }
+  }
+}

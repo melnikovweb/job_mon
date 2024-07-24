@@ -1,0 +1,29 @@
+@import "./../../resources/scss/theme/mixins/all.scss";
+
+.search {
+  &-results {
+    list-style: none;
+
+    .post__title::after {
+      content: "";
+      display: block;
+      width: 53px;
+      height: 8px;
+      background-color: #d8232a;
+      margin-top: 20px;
+      margin-bottom: 25px;
+    }
+  }
+
+  &-result {
+    padding-top: 30px;
+
+    @include breakpoint-up(md-s) {
+      padding-top: 60px;
+    }
+  }
+
+  &-posts {
+    padding-top: 30px;
+  }
+}

@@ -1,0 +1,70 @@
+{% for tab,value in posts %}
+    <div class="panel {{ loop.index is same as 1 ? 'active' : '' }}" data-panel="{{ slugify(tab) }}">
+      <div class="year-tabs">
+        <div class="sk-container">
+          <ul class="year-tabs-list">
+            {% for year,value in value %}
+              <li class="{{ loop.index is same as 1 ? 'active-year' : '' }}" data-tab-year="{{ slugify(year) }}">
+                {{ year }}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div class="year-panels">
+        {% for year,value in value %}
+          <div class="year-panels-panel {{ loop.index is same as 1 ? 'active-year' : '' }}"
+               data-panel-year="{{ slugify(year) }}">
+            <div class="sk-container">
+              {% for key,value in value %}
+                {% set other = wpml_current_language is same as 'bg' ? 'Други' : 'Other'  %}
+                  <h3 style="{{  key is same as other ? 'opacity: 0' : '' }}">{{ key }}</h3>
+                {% for post in value %}
+                  <div class="post">
+                    <div class="left">
+                      <div class="date">{{ post.date }}</div>
+                      <div class="category">{{ post.category }}</div>
+                      {% if post.fields.documents|first %}
+                        {% set item = post.fields.documents|first %}
+                        {% if post.content %}
+                          <a href="{{ post.permalink }}" target="_self" class="title">{{ post.title }}</a>
+                        {% else %}
+                          <div class="title">{{ post.title }}</div>
+                        {% endif %}
+                      {% endif %}
+                    </div>
+                    <div class="right">
+                      {% if post.fields.documents|first %}
+                        {% set item = post.fields.documents|first %}
+                        {% if item.document %}
+                          <span class="type">
+                          {% if item.document.subtype is same as 'pdf' %}
+                            {{ item.document.subtype }}
+                          {% elseif item.document.subtype is same as 'zip' %}
+                            {{ item.document.subtype }}
+                          {% elseif item.document.subtype is same as 'vnd.openxmlformats-officedocument.spreadsheetml.sheet' %}
+                            {{ 'xlsx' }}
+                          {% elseif item.document.subtype is same as 'vnd.ms-excel' %}
+                            {{ 'xls' }}
+                          {% elseif item.document.subtype is same as 'html' %}
+                            {{ item.document.subtype }}
+                          {% else %}
+                            {{ 'doc' }}
+                          {% endif %}
+                        </span>
+                          <span class="size">{{ post.filesize }}</span>
+                          <a class="download" href="{{ item.document.url }}" download target="_blank">
+                            <span>Download</span>
+                          </a>
+                        {% endif %}
+                      {% endif %}
+                    </div>
+                  </div>
+                {% endfor %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+{% endfor %}

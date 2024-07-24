@@ -1,0 +1,119 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.content-wrapper,
+.block-editor-block-list__block {
+  .tabs-block {
+    background-color: var(--sk-color-border);
+  
+    .tabs-wrapper {
+      background-color: var(--sk-color-white);
+      padding-top: 40px;
+  
+      .tabs {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-flow: row wrap;
+        gap: 20px 0;
+  
+        > .tabs-block__button {
+          text-align: center;
+          min-height: 70px;
+          position: relative;
+          cursor: pointer;
+          transition: color 0.3s ease-in-out;
+          font-size: 16px;
+          font-weight: 600;
+          padding: 0 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-grow: 1;
+          background-color: transparent;
+          border: none;
+          color: var(--sk-color-text);
+  
+          &::after {
+            position: absolute;
+            content: '';
+            height: 2px;
+            left: 10px;
+            right: 10px;
+            bottom: 0;
+            transition: background-color 0.3s ease-in-out;
+          }
+
+          &:focus-visible {
+            outline: transparent;
+            color: var(--sk-color-second);
+          }
+
+          span {
+            pointer-events: none;
+          }
+  
+          @media screen and (max-width: 782px) {
+            width: 100% !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--sk-color-light-grey);
+  
+            &::after {
+              left: 0;
+              right: 0;
+            }
+          }
+  
+          &.active {
+            color: var(--sk-color-primary);
+            pointer-events: none;
+  
+            &::after {
+              background-color: var(--sk-color-primary);
+            }
+
+            &:focus-visible {
+              outline: transparent;
+              color: var(--sk-color-second);
+
+              &::after {
+                background-color: var(--sk-color-second);
+              }
+            }
+          }
+  
+          &:hover {
+            color: var(--sk-color-primary);
+  
+            &::after {
+              background-color: var(--sk-color-primary);
+            }
+          }
+        }
+  
+        @media screen and (max-width: 782px) {
+          padding-bottom: 20px;
+        }
+      }
+    }
+  
+    .panels {
+      padding-top: 40px;
+      padding-bottom: 10px;
+  
+      .panel {
+        display: none;
+  
+        &.active {
+          display: block;
+        }
+      }
+    }
+  }
+}

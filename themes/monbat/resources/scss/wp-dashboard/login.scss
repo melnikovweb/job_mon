@@ -1,0 +1,44 @@
+body {
+  background-image: linear-gradient(to bottom, #f8fafd 30%, #183b77 150%);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+}
+
+.login {
+  h1 {
+    a {
+      background-image: none;
+      background-position: center center;
+      background-size: contain;
+      width: 100%;
+    }
+  }
+
+  .message,
+  #login_error {
+    border-radius: 5px;
+  }
+
+  form {
+    position: relative;
+    background-color: #fffefa;
+    border: 0;
+    border-radius: 5px;
+    box-shadow: 0 6px 13px -4px rgba(0, 0, 0, 0.75);
+
+    #wp-submit {
+      background-color: #fffefa;
+      border: 1px solid #00005b;
+      border-radius: 3px;
+      color: #00005b;
+      box-shadow: 0 6px 8px -4px rgba(0, 0, 0, 0.48);
+    }
+  }
+
+  #backtoblog a,
+  #nav a {
+    display: block;
+    text-align: center;
+  }
+}

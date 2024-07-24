@@ -1,0 +1,17 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.sk-slider-animation {
+  overflow: hidden;
+
+  &__wrapp {
+    opacity: 0;
+
+    .swiper-initialized & {
+      opacity: 1;
+    }
+  }
+}

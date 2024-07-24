@@ -1,0 +1,52 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+.block-editor-block-list__block {
+  .accordion {
+    &__content {
+      grid-template-rows: 1fr;
+    }
+
+    &__item {
+      &:hover {
+      &::before,
+      & + *::before {
+        display: block;
+      }
+
+      .accordion__title {
+        color: var(--sk-color-second-dark);
+
+          &::before,
+          &::after {
+          background-color: var(--sk-color-primary);
+          }
+        }
+      }
+    }
+
+    &__title {
+      &:hover {
+        color: var(--sk-color-second-dark);
+        background-color: var(--sk-color-white);
+
+        &::before,
+        &::after {
+          background-color: var(--sk-color-primary);
+        }
+      }
+    }
+
+    &.is-style-popup {
+      .accordion__content {
+        position: static;
+        opacity: 1;
+        box-shadow: none;
+      }
+    }
+  }
+}

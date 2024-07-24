@@ -1,0 +1,67 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+
+  <div class="news-archive">
+
+    <div class="sk-container">
+      <h1 class="sk-red-title">{{ page_title }}</h1>
+      {% for post in posts %}
+        {{ post.content }}
+      {% endfor %}
+    </div>
+
+    <div class="news-list">
+      {% if not (news_arr is empty) %}
+
+        <div class="sk-container">
+          <div class="tabs">
+            <button class="tab-btn active" data-tab="all">{{ __( "All", 'monbat' ) }}</button>
+            {% for cat in cat_arr %}
+              <button class="tab-btn" data-tab="{{ slugify(cat) }}">{{ cat }}</button>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="tabs-container">
+
+          <ul class="tabs-list">
+            {% for tab in tabs_arr %}
+                <li data-tab-year="{{ tab }}" class="tab {{ loop.index is same as 1 ? 'tab-active' : '' }}">{{ tab }}</li>
+            {% endfor %}
+          </ul>
+
+          <div class="tabs-content">
+            {% for post in news_arr %}
+            {% if year_check is empty %}
+            <div data-panel-year="{{ post.post_year }}" class="tab-content  sk-container content-active">
+              {% elseif year_check != post.post_year %}
+            </div>
+            <div data-panel-year="{{ post.post_year }}" class="tab-content  sk-container ">
+              {% endif %}
+
+              {% if month_check != post.post_month or month_check is empty %}
+                <h3 class="news-month-row year-{{ post.post_year }}">{{ post.post_month }}</h3>
+              {% endif %}
+
+              {% set month_check = post.post_month %}
+
+              <div data-category="{{ slugify(post.post_categories ) }}" class="news-item-row year-{{ post.post_year }}">
+                <div class="news-item-date">{{ post.post_date }}</div>
+                <div class="news-item-category">
+                  {% if not (post.post_categories is empty) %}
+                    {{ post.post_categories }}
+                  {% endif %}
+                </div>
+                <div class="news-item-title"><a href="{{ post.url }}">{{ post.post_title }}</a></div>
+              </div>
+              {% set year_check = post.post_year %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

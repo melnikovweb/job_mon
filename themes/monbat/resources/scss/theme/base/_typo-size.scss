@@ -1,0 +1,51 @@
+/* stylelint-disable */
+:root {
+
+  //line height / font size
+  --sk-line-height--body: #{(24/18)};
+  --sk-line-height--h1-up: #{(57/56)};
+  --sk-line-height--h1: #{(50/42)};
+  --sk-line-height--h2-up: #{(48/40)};
+  --sk-line-height--h2--md: #{(40/36)};
+  --sk-line-height--h2: #{(40/30)};
+  --sk-line-height--h3: #{(34/25)};
+  --sk-line-height--h4: #{(24/22)};
+  --sk-line-height--h5: #{(20/20)};
+  --sk-line-height--h6: #{(24/16)};
+  --sk-line-height--gr: #{(37/28)};
+
+  --sk-text-base-size: 18px;
+
+  --sk-text--h1-up: #{clamp-calc(40px, 56px)};
+  --sk-text--h1: #{clamp-calc(25px, 42px)};
+  --sk-text--h2-up: #{clamp-calc(30px, 40px)};
+  --sk-text--h2-md: #{clamp-calc(26px, 36px)};
+  --sk-text--h2: #{clamp-calc(26px, 30px)};
+  --sk-text--h3: #{clamp-calc(20px, 25px)};
+  --sk-text--h4: #{clamp-calc(18px, 22px)};
+  --sk-text--h5: #{clamp-calc(16px, 20px)};
+  --sk-text--h6: #{clamp-calc(14px, 16px)};
+  --sk-text--gr: #{clamp-calc(18px, 28px)};
+  --sk-text--lg: 19px;
+  --sk-text--md: 16px;
+  --sk-text--xs: 14px;
+  --sk-text--2xs: 12px;
+  --sk-text--3xs: 10px;
+}
+
+@include breakpoint-down(sm) {
+  :root {
+    --sk-text-base-size: 14px;
+    --sk-line-height--body: #{(18/14)};
+    --sk-line-height--h1-up: #{(42/40)};
+    --sk-line-height--h1: #{(38/32)};
+    --sk-line-height--h2-up: #{(36/30)};
+    --sk-line-height--h2--md: #{(30/26)};
+    --sk-line-height--h2: #{(30/26)};
+    --sk-line-height--h3: #{(28/20)};
+    --sk-line-height--h4: #{(20/18)};
+    --sk-line-height--h5: #{(16/16)};
+    --sk-line-height--h6: #{(21/14)};
+    --sk-line-height--gr: #{(26/18)};
+  }
+}

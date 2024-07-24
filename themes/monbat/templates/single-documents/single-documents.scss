@@ -1,0 +1,96 @@
+@import "./../../resources/scss/theme/mixins/all.scss";
+
+.content-wrapper {
+  .article {
+    &-date {
+      font-size: var(--sk-text-xs);
+      font-weight: 600;
+      line-height: 36px;
+      text-transform: uppercase;
+      margin-bottom: 55px;
+
+      @include breakpoint-down(sm) {
+        margin-bottom: 35px;
+      }
+    }
+
+    &-document {
+      border-top: 1px solid var(--sk-color-border-doc);
+      border-bottom: 1px solid var(--sk-color-border-doc);
+      padding: 18px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: var(--sk-text--md);
+      font-weight: 600;
+      line-height: 1;
+
+      @include breakpoint-down(sm) {
+        font-size: var(--sk-text--2xs);
+      }
+
+      &__title {
+        margin: 0;
+
+        a {
+          will-change: color;
+          transition: color 0.3s ease-in-out;
+        }
+      }
+
+      & + .article-document {
+        border-top-width: 0;
+      }
+
+      &__type,
+      &__size {
+        text-transform: uppercase;
+        margin-right: 20px;
+
+        @include breakpoint-down(sm) {
+          margin-right: 10px;
+        }
+      }
+
+      &__icon {
+        color: var(--sk-color-primary);
+        display: block;
+        text-decoration: none;
+        will-change: color;
+        transition: color 0.3s ease-in-out;
+        font-size: 20px;
+        line-height: 20px;
+        margin-right: 20px;
+
+        @include breakpoint-down(sm) {
+          margin-right: 10px;
+        }
+
+        &:hover {
+          color: var(--sk-color-secondary);
+        }
+
+        &::before {
+          content: "\67";
+          font-family: var(--sk-font-monbat);
+          speak: none;
+          line-height: 1;
+          -webkit-font-smoothing: antialiased;
+        }
+
+        span {
+          display: none;
+        }
+      }
+
+      &__info {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}
+
+.post-type-documents {
+  padding-bottom: 4.5em;
+}

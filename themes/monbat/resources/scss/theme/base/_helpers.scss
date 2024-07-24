@@ -1,0 +1,99 @@
+//Note: sk-wrapper need for fast prototype design
+.sk-wrapper {
+  display: flex;
+
+  &--wrap {
+    flex-wrap: wrap;
+  }
+
+  &--jc-sb {
+    justify-content: space-between;
+  }
+
+  &--jc-c {
+    justify-content: center;
+  }
+
+  &--column {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/**
+ * Clear inner floats
+ */
+.clearfix::after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+/**
+ * Hide text while making it readable for screen readers
+ * 1. Needed in WebKit-based browsers because of an implementation bug;
+ *    See: https://code.google.com/p/chromium/issues/detail?id=457146
+ */
+.hide-text {
+  overflow: hidden;
+  padding: 0; /* 1 */
+  text-indent: 101%;
+  white-space: nowrap;
+}
+
+/**
+ * Hide element while making it readable for screen readers
+ * Shamelessly borrowed from HTML5Boilerplate:
+ * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
+ */
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.sk-image-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sk-only-d,
+.is-style-mobile-disable {
+  @include breakpoint-down(sm-x) {
+    display: none;
+  }
+}
+
+.is-style-tablet-disable {
+  @include breakpoint-down(sm-g) {
+    display: none;
+  }
+}
+
+.sk-only-m,
+.is-style-desk-disable {
+  @include breakpoint-up(sm) {
+    display: none;
+  }
+}
+
+.disable-scroll {
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+
+.wp-embed-aspect-16-9 {
+  iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+}

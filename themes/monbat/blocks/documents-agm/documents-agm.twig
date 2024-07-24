@@ -1,0 +1,22 @@
+<section
+  class="{{ class ~ '-section' }} {{ classes }} {{ block_classes }}" {{ block.anchor ? 'id=' ~ block.anchor : null }}>
+  <div class="filters">
+    <div class="sk-container">
+      <form method="post" class="form-filters-agm">
+        <input type="hidden" name="nonce" value="{{ filter_nonce }}">
+      </form>
+      <div class="buttons">
+        {% for btn in type %}
+          <button data-type="{{ btn.slug }}"
+            class="type-btn sk-btn sk-btn--primary {{ loop.index is same as 1 ? 'active-btn' : '' }}">{{ btn.name }}</button>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="dot-loader">
+    <div class="result-panel">
+      {% include "parts/components/agm-documents.twig" with {'posts': posts} %}
+    </div>
+  </div>
+</section>

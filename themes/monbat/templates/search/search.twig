@@ -1,0 +1,13 @@
+{% extends "base.twig" %}
+
+{% block content %}
+  <div class="sk-container">
+    <div class="text-center">
+      <h1>{{ __('Search', 'skeleton_theme') }}</h1>
+    </div>
+    {% include "parts/components/search-simple-form.twig" %}
+    <section class="search-posts">
+        {% include 'parts/search-posts.twig' %}
+    </section>
+  </div>
+{% endblock %}

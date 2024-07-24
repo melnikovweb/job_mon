@@ -1,0 +1,27 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+.gallery-slider {
+  .swiper-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    flex-basis: calc(33.3% - 30px);
+    margin: 15px;
+  }
+
+  .swiper-slide {
+    opacity: 1;
+  }
+}
+
+.components-accessible-toolbar .components-button,
+.components-toolbar .components-button {
+  margin-bottom: 0;
+}

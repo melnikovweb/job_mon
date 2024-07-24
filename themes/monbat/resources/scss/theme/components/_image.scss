@@ -1,0 +1,13 @@
+.wp-block-image {
+  .wp-element-caption {
+    font-size: var(--sk-text--2xs);
+    color: var(--sk-color-second-dark);
+    margin-bottom: 18px;
+    margin-top: 18px;
+
+    @include breakpoint-down(sm) {
+      margin-bottom: 14px;
+      margin-top: 14px;
+    }
+  }
+}

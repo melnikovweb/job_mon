@@ -1,0 +1,29 @@
+@import "./../../resources/scss/theme/mixins/all.scss";
+
+.content-wrapper {
+  .article {
+    &-content {
+      &__main {
+        margin-bottom: 30px;
+      }
+    }
+
+    &-document {
+      border-top: 1px solid var(--sk-color-border-doc);
+
+      & + .article-document {
+        border-top-width: 0;
+      }
+    }
+  }
+
+  .article-news {
+    &__cat {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.post-type-news {
+  padding-bottom: 4.5em;
+}

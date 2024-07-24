@@ -1,0 +1,36 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+.business-model-images__side {
+  z-index: 0;
+}
+
+.editor-styles-wrapper {
+  .sk-only-d,
+  .is-style-mobile-disable {
+    @media screen and (max-width: 767px) {
+      display: block;
+    }
+   }
+
+  .is-style-tablet-disable {
+    @media screen and (max-width: 782px) {
+      display: block;
+    }
+  }
+
+  .sk-only-m,
+  .is-style-desk-disable {
+    @media screen and (min-width: 768px) {
+      display: block;
+    }
+  }
+
+  .absolute-bottom {
+    position: static;
+  }
+}

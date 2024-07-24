@@ -1,0 +1,174 @@
+{
+    "version": 2,
+    "settings": {
+      "color": {
+        "custom": false,
+        "customGradient": false,
+        "corePalette": [],
+        "coreGradients": [],
+        "defaultGradients": false,
+        "defaultPalette": false,
+        "gradients": [],
+        "palette": [
+          {
+            "slug": "white",
+            "color": "white",
+            "name": "White"
+          },
+          {
+            "slug": "black",
+            "color": "black",
+            "name": "Black"
+          },
+          {
+            "slug": "light-grey",
+            "color": "#e6e6e6",
+            "name": "Light Grey"
+          },
+          {
+            "slug": "dark-grey",
+            "color": "#757575",
+            "name": "Dark Grey"
+          },
+          {
+            "slug": "primary",
+            "color": "#D8232A",
+            "name": "Primary"
+          },
+          {
+            "slug": "secondary",
+            "color": "#183B77",
+            "name": "Secondary"
+          },
+          {
+            "slug": "dark-green",
+            "color": "#4E9978",
+            "name": "Dark Green"
+          },
+          {
+            "slug": "second-dark",
+            "color": "#2E2E3A",
+            "name": "Second Dark"
+          },
+          {
+            "slug": "border",
+            "color": "#EDF2F4",
+            "name": "Border"
+          },
+          {
+            "slug": "border-tab",
+            "color": "#bbb",
+            "name": "Border Tab"
+          }
+        ]
+      },
+      "border": {
+        "radius": true,
+        "color": true,
+        "style": false,
+        "width": true
+      },
+      "spacing": {
+        "margin": true,
+        "padding": true,
+        "blockGap": true,
+        "units": [ "px", "em", "rem", "vh", "vw", "%" ]
+      },
+      "typography": {
+        "dropCap": false,
+        "customFontSize": false,
+        "fontStyle": true,
+        "fontWeight": true,
+        "letterSpacing": true,
+        "textDecoration": true,
+        "textTransform": true,
+        "fontFamilies": [],
+        "fontSizes": [
+          {
+            "size": "var(--sk-text--2xs)",
+            "slug": "x-small",
+            "name": "Extra Small"
+          },
+          {
+            "size": "var(--sk-text--xs)",
+            "slug": "small",
+            "name": "Small"
+          },
+          {
+            "size": "var(--sk-text--md)",
+            "slug": "medium",
+            "name": "Medium Small"
+          },
+          {
+            "size": "var(--sk-text-base-size)",
+            "slug": "normal",
+            "name": "Normal"
+          },
+          {
+            "size": "var(--sk-text--lg)",
+            "slug": "large",
+            "name": "Large"
+          },
+          {
+            "size": "var(--sk-text--gr)",
+            "slug": "grand",
+            "name": "Grand"
+          },
+          {
+            "size": "var(--sk-text--h1-up)",
+            "slug": "h1-up",
+            "name": "H1 up"
+          },
+          {
+            "size": "var(--sk-text--h1)",
+            "slug": "h1",
+            "name": "H1"
+          },
+          {
+            "size": "var(--sk-text--h2-up)",
+            "slug": "h2-up",
+            "name": "H2 up"
+          },
+          {
+            "size": "var(--sk-text--h2-md)",
+            "slug": "h2-md",
+            "name": "H2 md"
+          },
+          {
+            "size": "var(--sk-text--h2)",
+            "slug": "h2",
+            "name": "H2"
+          },
+          {
+            "size": "var(--sk-text--h3)",
+            "slug": "h3",
+            "name": "H3"
+          },
+          {
+            "size": "var(--sk-text--h4)",
+            "slug": "h4",
+            "name": "H4"
+          },
+          {
+            "size": "var(--sk-text--h5)",
+            "slug": "h5",
+            "name": "H5"
+          },
+          {
+            "size": "var(--sk-text--h6)",
+            "slug": "h6",
+            "name": "H6"
+          }
+        ]
+      },
+      "layout": {
+        "contentSize": "1130px"
+      }
+    },
+    "styles": {
+      "spacing": {
+        "blockGap": "0"
+      }
+    }
+  }
+  

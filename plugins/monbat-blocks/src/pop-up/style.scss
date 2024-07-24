@@ -1,0 +1,165 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.content-wrapper,
+.block-editor-block-list__block {
+  .sk-popup {
+    &--button {
+      margin: -80px 0 80px;
+      margin-block-start: -80px !important;
+
+      @media screen and (max-width: 767px) {
+        margin: 0;
+        margin-block-start: 0 !important;
+      }
+    }
+
+    &--image {
+      text-align: center;
+      max-width: 220px;
+      margin: 0 auto 28px;
+    }
+
+    .sk-btn {
+      position: relative;
+      z-index: 1;
+
+      .sk-btn__title {
+        pointer-events: none;
+      }
+    }
+
+    &-trigger {
+      &--image {
+        display: block;
+        background-color: transparent;
+        border: none;
+        will-change: opacity;
+        transition: opacity 0.3s ease-in-out;
+        padding: 0;
+        margin: 18px auto 10px;
+        border-radius: 220px;
+        border: 2px solid transparent;
+
+        &:focus-visible {
+          outline: none;
+          border-bottom-color: var(--sk-color-primary);
+        }
+
+        &:hover {
+          cursor: pointer;
+          opacity: 0.5;
+        }
+
+        .sk-popup__media,
+        .sk-popup__img {
+          pointer-events: none;
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    &__name {
+      font-size: var(--sk-text--xs);
+      line-height: 36px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    &__role {
+      font-size: 13px;
+      line-height: 20px;
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+
+    &__content {
+      display: none;
+    }
+  }
+}
+
+.sk-popup {
+  &__main {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    overflow-y: scroll;
+    max-height: calc(100vh - 140px);
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__wrapp {
+    position: fixed;
+    inset: 0;
+    padding: 30px 0 80px;
+    background-color: rgba(255, 255, 255, 0.9);
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+    will-change: opacity, visibility;
+    transition: opacity, visibility, 0.3s ease-in-out;
+    z-index: -1;
+    cursor: pointer;
+
+    &.open {
+      visibility: visible;
+      pointer-events: auto;
+      opacity: 1;
+      z-index: 20;
+    }
+
+    p {
+      margin-bottom: 18px;
+
+      @media screen and (max-width: 767px) {
+        margin-bottom: 14px;
+      }
+    }
+  }
+
+  &__close {
+    display: block;
+    margin-left: auto;
+    font-size: 1.35em;
+    color: var(--sk-color-primary);
+    line-height: 27px;
+    opacity: 1;
+    cursor: pointer;
+    padding: 0;
+    width: 27px;
+    height: 27px;
+    top: 30px;
+    font-family: var(--sk-font-monbat);
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    will-change: color;
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: var(--sk-color-second);
+    }
+
+    &::before {
+      content: "\65";
+    }
+  }
+
+  &__role {
+    &--main {
+      font-size: var(--sk-text-base-size);
+      line-height: var(--sk-line-height--body);
+      font-weight: 700;
+    }
+  }
+}

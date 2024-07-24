@@ -1,0 +1,7 @@
+.sk-page-title {
+  margin-bottom: 40px;
+
+  @include breakpoint-down(sm) {
+    margin-bottom: 20px;
+  }
+}

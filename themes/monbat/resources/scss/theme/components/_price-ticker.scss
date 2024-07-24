@@ -1,0 +1,197 @@
+.ticker {
+  &.header-price {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    height: 100%;
+    padding: 0 20px;
+    opacity: 1;
+    transition: opacity 0.3s 0.7s ease-in-out;
+
+    @include breakpoint-down(sm) {
+      display: none;
+    }
+
+    .is-open & {
+      opacity: 0;
+      transition: opacity 0.3s 0.4s ease-in-out;
+      user-select: none;
+    }
+
+    .top-row,
+    .bottom-row {
+      display: flex;
+      align-items: center;
+    }
+
+    .top-row {
+      .exchange-title {
+        font-size: 12px;
+        text-transform: uppercase;
+        margin-right: 10px;
+        line-height: 18px;
+        padding-top: 3px;
+      }
+
+      .exchange-currency {
+        display: flex;
+        align-items: center;
+
+        > span {
+          display: inline-block;
+          line-height: 16px;
+
+          &.currency {
+            padding: 3px 3px 0 3px;
+            font-size: 14px;
+            color: var(--sk-color-second-dark);
+          }
+
+          &.avg-price,
+          &.percent {
+            font-size: 18px;
+            color: var(--sk-color-second-dark);
+            font-weight: 700;
+            line-height: 24px;
+          }
+
+          &.stock-icon {
+            width: 40px;
+            height: 26px;
+            transform: scale(0.5);
+            background-image: url(../img/asset-stock.png);
+
+            &.stock-up {
+              background-position: -20px -26px;
+            }
+
+            &.stock-equal {
+              background-position: -20px -68px;
+            }
+
+            &.stock-down {
+              background-position: -20px -108px;
+            }
+          }
+
+          &.percent {
+            &.stock-up {
+              color: var(--sk-color-green);
+            }
+
+            &.stock-equal {
+              color: var(--sk-color-black);
+            }
+
+            &.stock-down {
+              color: var(--sk-color-light-red);
+            }
+
+            > span {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+
+    .bottom-row {
+      font-size: 10px;
+      line-height: 18px;
+      text-transform: none;
+    }
+  }
+
+  &.block-price {
+    color: var(--sk-color-white);
+    max-width: 240px;
+    width: 100%;
+    margin-left: 0 !important;
+
+    .top-row {
+      .exchange-title {
+        margin-bottom: 15px;
+        font-size: 18px;
+        line-height: 22px;
+      }
+
+      .exchange-currency {
+        .stock-top,
+        .stock-bottom {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+        }
+
+        .stock-title {
+          font-size: 14px;
+          line-height: 17px;
+
+          > span {
+            margin-right: 3px;
+          }
+        }
+
+        .stock-top {
+          margin-bottom: 5px;
+        }
+
+        .stock-group {
+          .currency {
+            font-size: 14px;
+            line-height: 19px;
+          }
+
+          .avg-price {
+            font-size: 22px;
+            line-height: 26px;
+          }
+        }
+
+        .stock-bottom {
+          .stock-title {
+            font-size: 14px;
+            line-height: 17px;
+          }
+
+          .percent {
+            font-size: 22px;
+            line-height: 26px;
+            white-space: nowrap;
+
+            > span {
+              font-size: 14px;
+              line-height: 19px;
+            }
+          }
+
+          .stock-icon {
+            width: 40px;
+            height: 26px;
+            transform: scale(0.5);
+            background-image: url(../img/asset-stock.png);
+
+            &.stock-up {
+              background-position: -20px -26px;
+            }
+
+            &.stock-equal {
+              background-position: -144px -194px;
+            }
+
+            &.stock-down {
+              background-position: -20px -108px;
+            }
+          }
+        }
+      }
+    }
+
+    .bottom-row {
+      font-size: 11px;
+      line-height: 14px;
+      margin-top: 20px;
+    }
+  }
+}

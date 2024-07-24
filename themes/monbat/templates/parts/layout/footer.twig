@@ -1,0 +1,64 @@
+{% if not is_front_page %}
+  <div class="footer-wrapper">
+    <div class="scroll-top">
+      {{ __('top', 'monbat') }}
+    </div>
+
+    {% if prev_page or next_page %}
+      <div class="footer-navigation">
+        {% if prev_page %}
+          {% if prev_page.url %}
+            <a class="prev-item" href="{{ prev_page.url }}" title="{{ prev_page.title }}" target="_self">
+              <span>{{ prev_page.title }}</span>
+            </a>
+          {% else %}
+            {{ prev_page }}
+          {% endif %}
+        {% endif %}
+        {% if related_pages %}
+          <div class="related__pages">
+            <p>{{ __('Related content:', 'monbat') }}</p>
+            <span class="current">{{ __('Select', 'monbat') }}</span>
+            <ul class="dropdown">
+              {% for item in related_pages %}
+                {% if item %}
+                  <li>
+                    <a href="{{ item.link.url }}" title="{{ item.link.title|capitalize }}"
+                       target="{{ item.link.target ? '_blank': '_self' }}">
+                      {{ item.link.title }}
+                    </a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+        {% if next_page %}
+          {% if next_page.url %}
+            <a class="next-item" href="{{ next_page.url }}" title="{{ next_page.title }}" target="_self">
+              <span>{{ next_page.title }}</span>
+            </a>
+          {% else %}
+            {{ next_page }}
+          {% endif %}
+        {% endif %}
+      </div>
+    {% endif %}
+    <footer class="footer">
+      <div class="footer-wrapper">
+        <p>Copyright © 2018 - {{ "now"|date('Y') }} {{ __('Monbat AD All rights reserved', 'monbat') }}</p>
+        {% if logo_svg %}
+          <div class="footer-logo-wrapper">
+            <a href="{{ site.url }}" title="Home" rel="Home" class="footer-logo footer-logo-svg white">
+              {{ inline_svg(logo_svg, true) }}
+            </a>
+          </div>
+        {% else %}
+          <a href="{{ site.url }}" rel="Home" class="footer-logo white">
+            <img title="Home" src="{{ logo_img }}" alt="monbat-logo" class="footer-image" height="38" width="128">
+          </a>
+        {% endif %}
+      </div>
+    </footer>
+  </div>
+{% endif %}

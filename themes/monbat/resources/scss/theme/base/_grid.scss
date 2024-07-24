@@ -1,0 +1,61 @@
+/* stylelint-disable */
+:root {
+  --sk-container-padding: 30px;
+
+  --sk-container-width-lg: calc(1230px + var(--sk-container-padding) * 2);
+  --sk-container-width--md: calc(1100px + var(--sk-container-padding) * 2);
+  --sk-container-width--sm: calc(754px + var(--sk-container-padding) * 2);
+
+  --sk-header-height: 83px;
+  --sk-accordion-header-height: 88px;
+}
+
+@include breakpoint-down(md) {
+  :root {
+    --sk-container-padding: 15px;
+  }
+}
+
+.sk-container,
+.is-style-container {
+  max-width: var(--sk-container-width-lg);
+  margin: 0 auto;
+  width: 100%;
+  padding-left: var(--sk-container-padding);
+  padding-right: var(--sk-container-padding);
+
+  &--md {
+    max-width: var(--sk-container-width--md);
+  }
+
+  &--sm {
+    max-width: var(--sk-container-width--sm);
+  }
+
+  &--fl {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+.is-style-container--md,
+.is-style-container--sm,
+.is-style-container--fl {
+  @extend .sk-container;
+}
+
+.content-wrapper {
+  .wp-block-columns {
+    @include breakpoint-between(sm, md-s) {
+      flex-wrap: wrap !important;
+    }
+
+    &:not(.is-not-stacked-on-mobile):not(.is-style-responce) {
+      & > .wp-block-column {
+        @include breakpoint-between(sm, md-s) {
+          flex-basis: 50% !important;
+        }
+      }
+    }
+  }
+}

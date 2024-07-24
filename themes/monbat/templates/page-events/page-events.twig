@@ -1,0 +1,54 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+
+<div class="events-archive">
+
+	<div class="sk-container">
+		<h1 class="sk-red-title">{{ page_title }}</h1>
+    {% for post in posts %}
+      {{ post.content }}
+    {% endfor %}
+	</div>
+
+	<div class="events-list">
+		{% if not (events_arr is empty) %}
+			<div class="tabs-container">
+					<ul class="tabs-list">
+						{% for tab in tabs_arr %}
+							{% if tabs_arr|first == tab %}
+								<li id="year-{{tab}}" class="tab tab-active">{{tab}}</li>
+							{% else %}
+								<li id="year-{{tab}}" class="tab">{{tab}}</li>
+							{% endif %}
+						{% endfor %}
+					</ul>
+
+				<div class="tabs-content">
+					{% for event in events_arr %}
+						{% if year_check is empty %}
+							<div class="tab-content  sk-container content-active">
+						{% elseif year_check != event.post_year %}
+							</div><div class="tab-content  sk-container ">
+						{% endif %}
+
+						{% if month_check != event.post_month or month_check is empty %}
+							<h3 class="events-month-row year-{{event.post_year}}">{{event.post_month}}</h3>
+						{% endif %}
+
+						{% set month_check = event.post_month %}
+
+						<div class="events-item-row year-{{event.post_year}}">
+							<div class="events-item-date">{{event.post_date}}</div>
+							<div class="events-item-title"><a href="{{event.url}}">{{event.post_title}}</a></div>
+						</div>
+						{% set year_check = event.post_year %}
+					{% endfor %}
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}

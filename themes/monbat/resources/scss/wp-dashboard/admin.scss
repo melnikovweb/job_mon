@@ -1,0 +1,17 @@
+/* stylelint-disable */
+@import "../theme/mixins/all";
+@import "../theme/mixins/fonts-admin-mixin";
+@import "../theme/base/colors";
+@import "../theme/base/fonts-admin";
+
+.editor-styles-wrapper {
+  @import "../theme/base/grid";
+  // @import "../theme/base/helpers";
+  @import "../theme/base/typo-size";
+  @import "../theme/base/typo-wp-editor";
+  @import "../theme/base/grid";
+  @import "../theme/base/typo";
+  @import "../theme/base/typo-mods";
+  @import "../theme/base/typo-wp-editor";
+  @import "../theme/components/all";
+}
